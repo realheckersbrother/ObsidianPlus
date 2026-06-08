@@ -62,6 +62,22 @@ local CustomImageManagerAssets = {
 
         Id = nil,
     },
+
+	CloseIcon = {
+        RobloxId = 7072725342,
+        Path = "Obsidian/assets/CloseIcon.png",
+        URL = BaseURL .. "assets/CloseIcon.png",
+
+        Id = nil,
+    },
+
+	MinimizeIcon = {
+        RobloxId = 7072719338,
+        Path = "Obsidian/assets/MinimizeIcon.png",
+        URL = BaseURL .. "assets/MinimizeIcon.png",
+
+        Id = nil,
+    },
 }
 do
     local function RecursiveCreatePath(Path: string, IsFile: boolean?)
