@@ -333,7 +333,7 @@ local Templates = {
         CornerRadius = 4,
         NotifySide = "Right",
         ShowCustomCursor = true,
-        Font = Enum.Font.GothamSSm,
+        Font = Enum.Font.BuilderSansMedium,
         ToggleKeybind = Enum.KeyCode.RightControl,
         
         ShowMobileButtons = true,
