@@ -217,10 +217,10 @@ local Library = {
     Options = Options,
 
     NotifySide = "Right",
-    ShowCustomCursor = true,
+    ShowCustomCursor = false,
     ForceCheckbox = false,
     ShowToggleFrameInKeybinds = true,
-    NotifyOnError = false,
+    NotifyOnError = true,
 
     CantDragForced = false,
 
@@ -328,12 +328,12 @@ local Templates = {
         AutoShow = true,
         Center = true,
         Resizable = true,
-        SearchbarSize = UDim2.fromScale(1, 0.8),
+        SearchbarSize = UDim2.fromScale(0.8, 1),
         GlobalSearch = false,
         CornerRadius = 4,
         NotifySide = "Right",
         ShowCustomCursor = true,
-        Font = Enum.Font.Code,
+        Font = Enum.Font.GothamSSm,
         ToggleKeybind = Enum.KeyCode.RightControl,
         
         ShowMobileButtons = true,
