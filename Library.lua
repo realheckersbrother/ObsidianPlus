@@ -4857,7 +4857,7 @@ do
             SearchBox = New("TextBox", {
                 BackgroundTransparency = 1,
                 PlaceholderText = "Search...",
-                Position = UDim2.fromOffset(-50, 0), -- -8
+                Position = UDim2.fromOffset(50, 0), -- -8
                 Size = UDim2.new(1, -12, 1, 0),
                 TextSize = 14,
                 TextXAlignment = Enum.TextXAlignment.Left,
