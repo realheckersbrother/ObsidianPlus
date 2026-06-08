@@ -328,7 +328,7 @@ local Templates = {
         AutoShow = true,
         Center = true,
         Resizable = true,
-        SearchbarSize = UDim2.fromScale(1, 1),
+        SearchbarSize = UDim2.fromScale(0.5, 0.5),
         GlobalSearch = false,
         CornerRadius = 4,
         NotifySide = "Right",
@@ -4857,7 +4857,7 @@ do
             SearchBox = New("TextBox", {
                 BackgroundTransparency = 1,
                 PlaceholderText = "Search...",
-                Position = UDim2.fromOffset(50, 0), -- -8
+                Position = UDim2.fromOffset(-8, 0),
                 Size = UDim2.new(1, -12, 1, 0),
                 TextSize = 14,
                 TextXAlignment = Enum.TextXAlignment.Left,
