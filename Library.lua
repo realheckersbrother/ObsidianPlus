@@ -240,7 +240,7 @@ local Library = {
         AccentColor = Color3.fromRGB(125, 85, 255),
         OutlineColor = Color3.fromRGB(40, 40, 40),
         FontColor = Color3.new(1, 1, 1),
-        Font = Font.fromEnum(Enum.Font.BuilderSansMedium),
+        Font = Font.fromEnum(Enum.Font.FredokaOne),
 
         RedColor = Color3.fromRGB(255, 50, 50),
         DestructiveColor = Color3.fromRGB(220, 38, 38),
@@ -328,12 +328,12 @@ local Templates = {
         AutoShow = true,
         Center = true,
         Resizable = true,
-        SearchbarSize = UDim2.fromScale(0.8, 1),
+        SearchbarSize = UDim2.fromScale(0.9, 1),
         GlobalSearch = false,
         CornerRadius = 4,
         NotifySide = "Right",
-        ShowCustomCursor = true,
-        Font = Enum.Font.BuilderSansMedium,
+        ShowCustomCursor = false,
+        Font = Enum.Font.RobotoMono,
         ToggleKeybind = Enum.KeyCode.RightControl,
         
         ShowMobileButtons = true,
@@ -2132,6 +2132,8 @@ local ArrowIcon = Library:GetIcon("chevron-up")
 local ResizeIcon = Library:GetIcon("move-diagonal-2")
 local KeyIcon = Library:GetIcon("key")
 local MoveIcon = Library:GetIcon("move")
+local CloseIcon = Library:GetIcon("x")
+local MinimizeIcon = Library:GetIcon("minimize-2")
 
 function Library:SetIconModule(module: IconModule)
     FetchIcons = true
@@ -2143,6 +2145,8 @@ function Library:SetIconModule(module: IconModule)
     ResizeIcon = Library:GetIcon("move-diagonal-2")
     KeyIcon = Library:GetIcon("key")
     MoveIcon = Library:GetIcon("move")
+    CloseIcon = Library:GetIcon("x")
+    MinimizeIcon = Library:GetIcon("minimize-2")
 end
 
 local BaseAddons = {}
@@ -3003,7 +3007,7 @@ do
                 ScaleType = Enum.ScaleType.Tile,
                 Size = UDim2.fromOffset(16, 200),
                 TileSize = UDim2.fromOffset(8, 8),
-                Parent = ColorHolder,
+                Parent = Workspace,
             })
 
             TransparencyColor = New("Frame", {
@@ -6763,18 +6767,36 @@ function Library:CreateWindow(WindowInfo)
             })
         end
 
-        if MoveIcon then
-            New("ImageLabel", {
+        if CloseIcon then
+            local CloseBtn = New("ImageButton", {
                 AnchorPoint = Vector2.new(1, 0.5),
-                Image = MoveIcon.Url,
+                Image = CloseIcon.Url,
                 ImageColor3 = "OutlineColor",
-                ImageRectOffset = MoveIcon.ImageRectOffset,
-                ImageRectSize = MoveIcon.ImageRectSize,
+                ImageRectOffset = CloseIcon.ImageRectOffset,
+                ImageRectSize = CloseIcon.ImageRectSize,
                 Position = UDim2.new(1, -10, 0.5, 0),
+                Size = UDim2.fromOffset(32, 32),
+                SizeConstraint = Enum.SizeConstraint.RelativeYY,
+                Parent = TopBar,
+                Transparency = 1
+            })
+            CloseBtn.MouseButton1Click:Connect(function() Library:Toggle() end)
+        end
+
+        if MinimizeIcon then
+            local MinimizeBtn = New("ImageButton", {
+                AnchorPoint = Vector2.new(1, 0.5),
+                Image = MinimizeIcon.Url,
+                ImageColor3 = "OutlineColor",
+                ImageRectOffset = MinimizeIcon.ImageRectOffset,
+                ImageRectSize = MinimizeIcon.ImageRectSize,
+                Position = UDim2.new(1, -50, 0.5, 0),
                 Size = UDim2.fromOffset(28, 28),
                 SizeConstraint = Enum.SizeConstraint.RelativeYY,
                 Parent = TopBar,
+                Transparency = 1,
             })
+            MinimizeBtn.MouseButton1Click:Connect(function() Library:Toggle() end)
         end
 
         --// Bottom Bar \\--
@@ -8798,7 +8820,7 @@ function Library:CreateWindow(WindowInfo)
                 and Input.KeyCode.Name == Library.ToggleKeybind.Value
             ) or Input.KeyCode == Library.ToggleKeybind
         then
-            Library.Toggle()
+            Library:Toggle()
         end
     end))
 
